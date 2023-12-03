@@ -27,9 +27,6 @@ jobs:
     - name: Install dependencies
       run: npm i --silent
 
-    - name: Build angular project with ng
-      run: ng build
-
     - name: Run Selenium tests with java
       working-directory: selenium-tests 
       run: ./gradlew test
