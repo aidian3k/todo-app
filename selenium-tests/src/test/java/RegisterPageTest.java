@@ -67,8 +67,7 @@ class RegisterPageTest {
   }
 
   @Test
-  void shouldCorrectlyRegisterAndThenLoginUserWhenUserProvideProperInfoDuringRegistration()
-    throws InterruptedException {
+  void shouldCorrectlyRegisterAndThenLoginUserWhenUserProvideProperInfoDuringRegistration() {
     // given
     final String validEmail = "mwo-testing@wp.pl";
     final String validUserName = "mwo-username";
@@ -93,6 +92,28 @@ class RegisterPageTest {
 
     Assertions.assertThat(registerPageVerifyWebElements.currentUserName().getText())
       .isEqualTo(expectedWelcomeMessage);
+  }
+
+  @Test
+  void shouldShowPasswordMisMatchErrorWhenConfirmationPasswordDoesNotMatchFirstPassword() {
+    // given
+    final String validEmail = "mwo-testing@wp.pl";
+    final String validUserName = "mwo-username";
+    final String validPassword = "some-password";
+    final String validConfirmationPassword = "some-other-password";
+
+    // when register new user
+    registerPageActWebElements.emailInput().sendKeys(validEmail);
+    registerPageActWebElements.usernameInput().sendKeys(validUserName);
+    registerPageActWebElements.passwordInput().sendKeys(validPassword);
+    registerPageActWebElements.confirmationPasswordInput().sendKeys(validConfirmationPassword);
+    registerPageActWebElements.registerButton().click();
+
+    // then user should be properly logged in
+    final String expectedCurrentUrl = ApplicationEndpoints.REGISTER_PAGE_URL;
+
+    Assertions.assertThat(expectedCurrentUrl)
+      .isEqualTo(webDriver.getCurrentUrl());
   }
 
   private String getRequiredAttributeErrorMessage(String attribute) {
