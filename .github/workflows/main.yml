@@ -43,4 +43,4 @@ jobs:
         WorkflowFileName: "main.yml"
       env:
         PAT: ${{secrets.PAT}}
-        GithubToken: ${{secrets.github-rest-api-token}}
+        GithubToken: ${{secrets.GITHUBRESTAPISECRET}}
