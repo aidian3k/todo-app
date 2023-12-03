@@ -29,3 +29,18 @@ jobs:
 
     - name: Build Angular app and run Selenium tests
       run: npm run test-selenium
+
+    - name: Uploading the selenium tests error into AZDO
+      uses: stefanstranger/azuredevops-bug-action@1.1
+      if: failure()
+      with:
+        OrganizationName: "final-project-mwo"
+        PAT: "PAT"
+        ProjectName: "mwo-github-azdo-integration"
+        AreaPath: "mwo-github-azdo-integration\\Automation"
+        IterationPath: "mwo-github-azdo-integration"
+        GithubToken: "GithubToken"
+        WorkflowFileName: "main.yml"
+      env:
+        PAT: ${{secrets.PAT}}
+        GithubToken: ${{secrets.github-rest-api-token}}
