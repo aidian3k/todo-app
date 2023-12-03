@@ -12,27 +12,20 @@ jobs:
     steps:
     - name: Checkout the repository
       uses: actions/checkout@v3
-    
+
     - name: Set up JDK 17 for selenium tests
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
-        
+
     - name: Set up node for angular project
       uses: actions/setup-node@v4
       with:
         node-version: 20
-          
+
     - name: Install frontend project dependencies
       run: npm ci
-      
-    - name: Build Angular app
-      run: npm start
 
-    - name: Set up Chrome for selenium tests
-      uses: browser-actions/setup-chrome@latest
-
-    - name: Run Selenium tests with java
-      working-directory: selenium-tests 
-      run: ./gradlew test
+    - name: Build Angular app and run Selenium tests
+      run: npm run test-selenium
