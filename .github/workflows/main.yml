@@ -30,7 +30,7 @@ jobs:
     - name: Build Angular app and run Selenium tests
       run: npm run test-selenium
 
-    - name: Uploading the selenium tests error into AZDO
+    - name: Creating bug AZDO tasks with failed selenium tests
       uses: stefanstranger/azuredevops-bug-action@1.1
       if: failure()
       with:
