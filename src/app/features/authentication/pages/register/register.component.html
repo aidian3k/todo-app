@@ -1,0 +1,48 @@
+<div class="h-screen flex justify-center items-center bg-gray-100">
+  <form [className]="'w-1/3 flex justify-center p-2 border flex-col gap-2'" [formGroup]="registerFormGroup" (ngSubmit)="registerUser()">
+    <h2 class="mb-2 mt-0 text-2xl font-medium leading-tight text-primary text-center">
+      Welcome to the address-app - Login
+    </h2>
+    <mat-form-field appearance="fill" [style.width.%]="100">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-hint>Type in your email</mat-hint>
+    </mat-form-field>
+    <div class="flex gap-2">
+      <mat-error *ngIf="registerFormGroup.get('email')?.hasError('required') && registerFormGroup.get('email')?.touched">Email field is required</mat-error>
+      <mat-error *ngIf="registerFormGroup.get('email')?.hasError('email') && registerFormGroup.get('email')?.touched">This is not email</mat-error>
+    </div>
+    <mat-form-field appearance="fill" [style.width.%]="100">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username">
+      <mat-icon matSuffix>face</mat-icon>
+      <mat-hint>Type in your username</mat-hint>
+    </mat-form-field>
+    <div class="flex gap-2">
+      <mat-error *ngIf="registerFormGroup.get('username')?.hasError('required') && registerFormGroup.get('username')?.touched">Username field is required</mat-error>
+      <mat-error *ngIf="registerFormGroup.get('username')?.hasError('maxLength') && registerFormGroup.get('username')?.touched">Maximum length is 255</mat-error>
+    </div>
+    <mat-form-field appearance="fill" [style.width.%]="100">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-icon matSuffix>password</mat-icon>
+      <mat-hint>Type in your password</mat-hint>
+    </mat-form-field>
+    <div class="flex gap-2">
+      <mat-error *ngIf="registerFormGroup.get('password')?.hasError('required') && registerFormGroup.get('password')?.touched">Password field is required</mat-error>
+      <mat-error *ngIf="registerFormGroup.get('password')?.hasError('minLength') && registerFormGroup.get('password')?.touched">Minimum length is 6</mat-error>
+    </div>
+    <mat-form-field appearance="fill" [style.width.%]="100">
+      <mat-label>Confirmation password</mat-label>
+      <input matInput formControlName="confirmationPassword" type="password">
+      <mat-icon matSuffix>password</mat-icon>
+      <mat-hint>Type in confirmation password</mat-hint>
+    </mat-form-field>
+    <div class="flex gap-2">
+      <mat-error *ngIf="registerFormGroup.get('confirmationPassword')?.hasError('required') && registerFormGroup.get('confirmationPassword')?.touched">Confirmation password field is required</mat-error>
+    </div>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!registerFormGroup.valid">Register</button>
+    <p class="text-sm text-center">If you already have an account: <a routerLink="/auth/login" class="font-bold">Login!</a></p>
+  </form>
+</div>

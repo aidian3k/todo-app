@@ -1,0 +1,7 @@
+<div class="flex items-center">
+  <p class="w-full line-through text-green" [className]="getTaskDescriptionClass()">{{taskModel.taskDescription}}</p>
+  <div class="flex gap-2 w-1/2 justify-end">
+    <button class="p-2 border-2 rounded text-grey border-grey" (click)="updateCurrentTask()">{{taskModel.isDone ? 'Done' : 'Not Done'}}</button>
+    <button class="p-2 border-2 rounded text-red border-red" (click)="removeTask()">Remove</button>
+  </div>
+</div>

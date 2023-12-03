@@ -1,0 +1,20 @@
+<div class="h-screen w-full flex flex-col items-center justify-center bg-teal-lightest font-sans bg-gray-100">
+  <div class="flex gap-2 items-center justify-center">
+    <h1 class="text-2xl font-extrabold leading-none tracking-tight text-gray-900">Welcome back {{currentUser?.userName}}</h1>
+    <button class="rounded p-2 border bg-blue-50 font-bold" (click)="logoutUser()">Logout</button>
+  </div>
+  <div class="bg-white rounded shadow p-6 m-4 w-1/2">
+    <div class="mb-4">
+      <h1 class="text-2xl font-extrabold leading-none tracking-tight text-gray-900 text-center">What is to do for today?</h1>
+      <form class="flex mt-4" (ngSubmit)="addNewTask()" [formGroup]="addNewTaskFormGroup">
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Add Todo" formControlName="taskDescription">
+        <button class="p-2 border-2 rounded" type="submit" [disabled]="!this.addNewTaskFormGroup.valid">Add</button>
+      </form>
+    </div>
+    <div class="flex gap-2 flex-col">
+      <ng-container *ngFor="let taskModel of sortedTaskModel">
+        <app-task [taskModel]="taskModel"></app-task>
+      </ng-container>
+    </div>
+  </div>
+</div>
