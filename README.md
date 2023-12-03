@@ -122,3 +122,5 @@ użyłem Personal Access Key od AzureDevops oraz Github access key, który konfi
 mają przypinać się informacje o błędach - w tym przypadku konfiguruje nazwę organizacji z 1 punktu, projektu oraz iteration path.
 
 ## Film z opisanej funkcjonalności
+https://github.com/aidian3k/todo-app/assets/93425971/49e68095-9c03-4322-8cf7-065813866442
+
