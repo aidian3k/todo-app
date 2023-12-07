@@ -20,7 +20,6 @@ export class AuthGuard implements CanActivate {
     this.store.select(selectCurrentUser).subscribe(value => {
       this.currentUser = value;
     })
-
     if(!this.currentUser) {
       return this.router.navigateByUrl('/auth/login')
     }
